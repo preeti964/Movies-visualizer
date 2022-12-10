@@ -1,3 +1,4 @@
+import './moviecard.css';
 const MovieCard = ({ movie }) => {
     const { posterurl, title, imdbRating } = movie;
     let fallBackSrc =
@@ -7,10 +8,11 @@ const MovieCard = ({ movie }) => {
             <img
                 src={posterurl}
                 onError={(e) =>
-                    (e.target.onerror = null)((e.target.src = fallBackSrc))
+                    (e.target.onError = null)((e.target.src = fallBackSrc))
                 }
                 width='200px'
                 alt='movie-name'
+                className="movie_details"
             />
             <h3>{title}</h3>
             <p>{imdbRating}</p>

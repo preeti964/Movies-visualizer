@@ -7,7 +7,7 @@ export default function SideBar() {
             <ul>
                 <Link to='/my-movies'>
                     <li>
-                        <i class='fa fa-eye' aria-hidden='true'></i>
+                        <i class='fa fa-user' aria-hidden='true'></i>
                     </li>
                 </Link>
                 <Link to='/my-movies'>

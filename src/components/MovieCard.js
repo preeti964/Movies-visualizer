@@ -14,8 +14,8 @@ const MovieCard = ({ movie }) => {
                 alt='movie-name'
                 className='movie_details'
             />
-            <h3>{title}</h3>
-            <p>{imdbRating}</p>
+            <h4>{title}</h4>
+            <span>{imdbRating}</span>
         </div>
     );
 };

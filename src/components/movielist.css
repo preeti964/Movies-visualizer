@@ -1,13 +1,7 @@
 .movie-container{
-	/* display: flex;
-	flex-direction: row;
-	flex-wrap: wrap;
-	width: 80%;
-	margin-left: auto;
-	margin-right: auto;
-	padding-top: 50px; */
 	display:grid;
 	grid-template-columns: auto auto auto auto auto;
+	justify-content: space-between;
 }
 
 .movie-card{
@@ -32,7 +26,6 @@
 
 .sort-container{
 	padding: 15px 15px;
-	border-bottom: 1px solid white;
 	height:10vh;
 	display: block;
 	display: flex;
@@ -72,13 +65,15 @@
 .parent-container{
 	display: flex;
 	flex-direction: row;
+	height:100%;
 }
 
 .left-container{
 	flex: 0.2;
 	background-color: rgb(15 27 53);
 	/* height: calc(100vh - 60px); */
-	height:auto;
+
+	height:100%;
 	padding-left: 20px;
 	/* position: fixed; */
 	/* height: 100%; */

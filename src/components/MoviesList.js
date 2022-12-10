@@ -29,18 +29,21 @@ const MovieList = () => {
 
         if (event.target.innerText === 'All') {
             setFilteredData(allData);
+            // setAllData(allData);
         } else {
             setFilteredData(filtered_data);
+            // setAllData(filtered_data);
         }
     };
 
     const handleSearch = (val) => {
+        
         setSearchText(val);
         let filtered_data = allData;
         if (val === '') {
             setFilteredData(allData);
         } else {
-            filtered_data = allData.filter((data) => data.title.includes(val));
+            filtered_data = allData.filter((data) => data.title.toLowerCase().includes(val.toLowerCase()));
             setFilteredData(filtered_data);
         }
     };
@@ -78,7 +81,7 @@ const MovieList = () => {
                                                 handleSorting('imdbRating')
                                             }
                                         >
-                                            imdb Rating
+                                            imdbRating
                                         </span>
                                     </li>
                                     <li>
@@ -99,6 +102,9 @@ const MovieList = () => {
                             {filteredData.map((movie, index) => (
                                 <MovieCard movie={movie} key={index} />
                             ))}
+                             {/* {allData.map((movie, index) => (
+                                <MovieCard movie={movie} key={index} />
+                            ))} */}
                         </div>
                     </div>
                 </div>

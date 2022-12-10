@@ -1,116 +1,102 @@
 import { moviesData } from '../data/movieslist';
 import MovieCard from './MovieCard';
-import { CiSearch } from 'react-icons/ci';
-import './movielist.css';
 import { useState } from 'react';
 import SideBar from './SideBar';
+import Search from './Search';
+import Genres from './Genres';
+import './movielist.css';
 
 const MovieList = () => {
+    const [allData, setAllData] = useState(moviesData);
+    const [filteredData, setFilteredData] = useState(moviesData);
+    const [searchText, setSearchText] = useState('');
 
-    const [sortrating, setsortrating] = useState(moviesData);
-    const [movieGen, setMovieGen] = useState('');
-    const [showData, setShowData] = useState(true);
-    const sortImdb = () => {
+    const handleSorting = (key) => {
         let arr1 = [];
-        var arr = sortrating.sort((a, b) => {
-            // if(abc=="imdbRating")
-            return a.imdbRating - b.imdbRating;
+        var arr = allData.sort((a, b) => {
+            return a[key] - b[key];
         });
         for (let i of arr) {
             arr1.push(i);
         }
-        setsortrating(arr1);
+        setFilteredData(arr1);
     };
 
-    const sortYear = () => {
-        let arr1 = [];
-        var arr = sortrating.sort((a, b) => {
-            return a.year - b.year;
-        });
-        for (let i of arr) {
-            arr1.push(i);
+    const handleGenreChange = (event) => {
+        const filtered_data = allData.filter((data) =>
+            data.genres.includes(event.target.innerText)
+        );
+
+        if (event.target.innerText === 'All') {
+            setFilteredData(allData);
+        } else {
+            setFilteredData(filtered_data);
         }
-        setsortrating(arr1);
-    }
-
-    const actionHandler = (event) => {
-        console.log(event.target.innerText);
-
-        setMovieGen(event.target.innerText);
-        if (event.target.innerText === 'All')
-            setShowData(true);
-        else
-            setShowData(false);
     };
 
-    const filter_data = sortrating.filter((xyz) => { return xyz.genres.includes(movieGen) });
+    const handleSearch = (val) => {
+        setSearchText(val);
+        let filtered_data = allData;
+        if (val === '') {
+            setFilteredData(allData);
+        } else {
+            filtered_data = allData.filter((data) => data.title.includes(val));
+            setFilteredData(filtered_data);
+        }
+    };
+
     return (
-        <div className="main-dashboard-container">
+        <div className='main-dashboard-container'>
             <div className='left-dashboard-container'>
-                <SideBar/>
+                <SideBar />
             </div>
             <div className='right-dashboard-container'>
-                <div className='search-container'>
-                    <CiSearch className='search-icon' />
-                    <input className='search-input' placeholder='Search...' />
-                </div>
+                <Search searchText={searchText} handleSearch={handleSearch} />
 
                 <div className='parent-container'>
                     <div className='left-container'>
-                        <p style={{ color: 'white', marginTop: '10px' }}>GENRES</p>
-                        <hr />
-                        <ul onClick={actionHandler} className='genres'>
-                            <li >All</li>
-                            <li >Action</li>
-                            <li>Adventure</li>
-                            <li>Biography</li>
-                            <li>Comedy</li>
-                            <li>Crime</li>
-                            <li>Drama</li>
-                            <li>History</li>
-                            <li>Mystery</li>
-                            <li>Scifi</li>
-                            <li>Sport</li>
-                            <li>Thriller</li>
-                        </ul>
-
+                        <Genres handleGenreChange={handleGenreChange} />
                     </div>
 
                     <div className='right-container'>
                         <div className='sort-container'>
                             <span>24 Movies</span>
-                            <div className="dropdown m-1 left " >
+                            <div className='dropdown m-1 left '>
                                 <button
-                                    className="btn btn-secondary dropdown-toggle sort-by"
-                                    type="button"
-                                    data-bs-toggle="dropdown"
-                                    aria-expanded="false"
+                                    className='btn btn-secondary dropdown-toggle sort-by'
+                                    type='button'
+                                    data-bs-toggle='dropdown'
+                                    aria-expanded='false'
                                 >
                                     Sort by
                                 </button>
-                                <ul className="dropdown-menu">
+                                <ul className='dropdown-menu'>
                                     <li>
-                                        <a className="dropdown-item" onClick={sortImdb}>
+                                        <span
+                                            className='dropdown-item'
+                                            onClick={() =>
+                                                handleSorting('imdbRating')
+                                            }
+                                        >
                                             imdb Rating
-                                        </a>
+                                        </span>
                                     </li>
                                     <li>
-                                        <a className="dropdown-item" onClick={sortYear}>
+                                        <span
+                                            className='dropdown-item'
+                                            onClick={() =>
+                                                handleSorting('year')
+                                            }
+                                        >
                                             Year
-                                        </a>
+                                        </span>
                                     </li>
                                 </ul>
                             </div>
                         </div>
 
                         <div className='movie-container'>
-                            {
-                                showData && sortrating.map((movie, index) => (
-                                    <MovieCard movie={movie} key={index} />
-                                ))
-                            }
-
-                            {!showData && filter_data.map((movie, index) => (
+                            {filteredData.map((movie, index) => (
                                 <MovieCard movie={movie} key={index} />
                             ))}
                         </div>

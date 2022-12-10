@@ -1,16 +1,31 @@
-import React from "react";
-import './SideBar.css'
+import React from 'react';
+import { Link } from 'react-router-dom';
+import './SideBar.css';
 export default function SideBar() {
-  return (
-      <div className="sideLine">
-        <ul>
-          <li><i class="fa fa-eye" aria-hidden="true"></i></li>
-          <li><i class="fa fa-desktop" aria-hidden="true"></i></li>
-          <li><i class="fa fa-home" aria-hidden="true"></i></li>
-          
-          <li><i class="fa fa-folder-open" aria-hidden="true"></i></li> 
-         
-        </ul>
+    return (
+        <div className='sideLine'>
+            <ul>
+                <Link to='/my-movies'>
+                    <li>
+                        <i class='fa fa-eye' aria-hidden='true'></i>
+                    </li>
+                </Link>
+                <Link to='/my-movies'>
+                    <li>
+                        <i class='fa fa-desktop' aria-hidden='true'></i>
+                    </li>
+                </Link>
+                <Link to='/my-movies'>
+                    <li>
+                        <i class='fa fa-home' aria-hidden='true'></i>
+                    </li>
+                </Link>
+                <Link to='/my-movies'>
+                    <li>
+                        <i class='fa fa-folder-open' aria-hidden='true'></i>
+                    </li>
+                </Link>
+            </ul>
         </div>
-  );
+    );
 }

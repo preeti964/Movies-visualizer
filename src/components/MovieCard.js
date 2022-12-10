@@ -12,7 +12,7 @@ const MovieCard = ({ movie }) => {
                 }
                 width='200px'
                 alt='movie-name'
-                className="movie_details"
+                className='movie_details'
             />
             <h3>{title}</h3>
             <p>{imdbRating}</p>

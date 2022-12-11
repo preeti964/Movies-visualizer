@@ -29,10 +29,8 @@ const MovieList = () => {
 
         if (event.target.innerText === 'All') {
             setFilteredData(allData);
-            // setAllData(allData);
         } else {
             setFilteredData(filtered_data);
-            // setAllData(filtered_data);
         }
     };
 
@@ -102,9 +100,6 @@ const MovieList = () => {
                             {filteredData.map((movie, index) => (
                                 <MovieCard movie={movie} key={index} />
                             ))}
-                             {/* {allData.map((movie, index) => (
-                                <MovieCard movie={movie} key={index} />
-                            ))} */}
                         </div>
                     </div>
                 </div>

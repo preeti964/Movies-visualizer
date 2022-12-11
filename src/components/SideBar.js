@@ -10,21 +10,19 @@ export default function SideBar() {
                         <i class='fa fa-user' aria-hidden='true'></i>
                     </li>
                 </Link>
-                <Link to='/my-movies'>
+                <Link to='/home'>
                     <li>
                         <i class='fa fa-desktop' aria-hidden='true'></i>
                     </li>
                 </Link>
-                <Link to='/my-movies'>
+                <Link to='/home'>
                     <li>
                         <i class='fa fa-home' aria-hidden='true'></i>
                     </li>
                 </Link>
-                <Link to='/my-movies'>
                     <li>
                         <i class='fa fa-folder-open' aria-hidden='true'></i>
                     </li>
-                </Link>
             </ul>
         </div>
     );

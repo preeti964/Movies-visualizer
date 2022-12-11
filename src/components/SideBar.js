@@ -5,7 +5,7 @@ export default function SideBar() {
     return (
         <div className='sideLine'>
             <ul>
-                <Link to='/my-movies'>
+                <Link to='/login'>
                     <li>
                         <i class='fa fa-user' aria-hidden='true'></i>
                     </li>
@@ -20,9 +20,11 @@ export default function SideBar() {
                         <i class='fa fa-home' aria-hidden='true'></i>
                     </li>
                 </Link>
+                <Link to='/my-movies'>
                     <li>
                         <i class='fa fa-folder-open' aria-hidden='true'></i>
                     </li>
+                    </Link>
             </ul>
         </div>
     );
